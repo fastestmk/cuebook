@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Invoice</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <style type="text/css">
+            page {
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 1cm rgba(0,0,0,1);
+                padding: 15px;
+            }
+            page[size="A4"] {  
+                width: 21cm;
+                height: 29.7cm; 
+            }
+            html,body { 
+                margin: auto;
+                background-color: #E5E5E5;
+            }
+            @media print {
+                body, page {
+                    margin: 0;
+                    box-shadow: 0;
+                }
+            }
+            .main-body {
+                background-color: #F9F9F9;
+                border: 0.5px solid #B9BDC1;
+            }
+            .main-text {
+                color: #FF5757;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 16px;
+                padding: 8px 8px;
+            }
+            .text-center {
+                text-align: center;
+            }
+            .label {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #B9BDC1;
+            }
+            .primary-color {
+                color: #FF5757;
+            }
+            .padH-10 {
+                padding-left: 10px;
+                padding-right: 10px; 
+            }
+            .padH-20 {
+                padding-left: 20px;
+                padding-right: 20px; 
+            }
+            .padH-30 {
+                padding-left: 30px;
+                padding-right: 30px; 
+            }
+            .tabl-text {
+                font-family: Roboto; 
+                font-weight: normal; 
+                font-size: 10px; 
+                line-height: 10px; 
+                color: #747474;
+            }
+            .tabl-header-text {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 12px;
+                line-height: 10px;
+                color: #B9BDC1;
+            }
+            .order-info {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 20px;
+            }
+
+            #label-container {
+                margin-top: 10px;
+            }
+			img {
+                height: 50px;
+                widthh: 50px;
+                border-radius: 4px;
+            }
+            .prod-info {
+                padding-left: 20px;
+            }
+            .billed-address {
+                margin-top: 8px;
+            }
+
+            @media print {
+                #label-container {page-break-before: auto;}
+                img {
+                    height: 50px;
+                    widthh: 50px;
+                    border-radius: 4px;
+                }
+                .prod-info {
+                    padding-left: 20px;
+                }
+                .billed-address {
+                    margin-top: 8px;
+                }
+            }
+          
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <page size="A4">
+        
+            <div class="container main-body" >
+                <div class="row justify-content-center" style="background-color: #FFF3F3;">
+                    <h3 class="main-text">TAX INVOICE</h3>
+                </div>
+                <div style="background-color: #F9F9F9;">
+                    {% comment %}<div class="row padH-20" style="margin-top: 22px; ">
+                        <!-- <div class="col">
+                            <label class="row label order-info">ORDER ID</label>
+                            <span class="row primary-color order-info">{{ order_id }}</span>
+                        </div>
+                        <div class="col">
+                            <label class="row label order-info">ORDER DATE</label>
+                            <span class="row primary-color order-info">{{ order_date }}</span>
+                        </div> -->
+                       <!--  <div class="col">
+                            <label class="row label order-info">INVOICE NO</label>
+                            <span class="row primary-color order-info">{{ invoice_id }}</span>
+                        </div>
+                        <div class="col">
+                            <label class="row label order-info">INVOICE DATE</label>
+                            <span class="row primary-color order-info">{{ invoice_date }}</span>
+                        </div> -->
+                    </div>{% end comment %}
+
+                    {% comment %} <div class="row padH-20 justify-content-between" style="margin-top: 22px; margin-bottom: 22px;">
+                        <div class="col-5 padH-30">
+                            <div class="row">
+                                <span class="row" style="font-family: Roboto; font-weight: 500; font-size: 10px; line-height: 20px; color: #B9BDC1;">BILLED TO</span>
+                                <span class="row billed-address" style="font-size: 10px; line-height: 14px; font-family: Roboto; font-weight: normal; color: #333333;">{{ client_name }}</span>
+                                {% if buyer_gst %}
+                                <span class="row" style="font-size: 10px; line-height: 14px; font-family: Roboto; font-weight: normal; color: #747474;">GST: {{ client_gst }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-5 padH-30">
+                            <div class="row">     
+                                <span class="row" style="font-family: Roboto; font-weight: 500; font-size: 10px; line-height: 20px; color: #B9BDC1;">SHIPPING ADDRESS</span>
+                                <span class="row billed-address" style="font-size: 10px; line-height: 14px; font-family: Roboto; font-weight: normal; color: #333333;">{{ client_address }}</span>
+                            </div>
+                        </div>
+                    </div> {% end comment %}
+                    {% comment %} <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"><span class="tabl-header-text">UNIT PRICE</span></th>
+                                <th scope="col"><span class="tabl-header-text">QTY</span></th>
+                                <th scope="col"><span class="tabl-header-text">DISCOUNT</span></th>
+                                <th scope="col"><span class="tabl-header-text">VALUE</span></th>
+                                <th scope="col"><span class="tabl-header-text">TAXES</span></th>
+                                <th scope="col"><span class="tabl-header-text">TOTAL</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                
+                                <td><span class="tabl-text">₹{{ item.price }}</span></td>
+                                <td><span class="tabl-text">{{ item.quantity }}</span></td>
+                                <td><span class="tabl-text">{{ item.discount }}</span></td>
+                                <td><span class="tabl-text">₹{{ item.value }}</span></td>
+                                <td><span class="tabl-text">₹{{ item.tax }}</span></td>
+                                <td><span class="tabl-text">₹{{ item.total }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table> {% endcomment %}
+                    <table>
+                        <tr style="font-size: 12px;">
+                            
+                            <th colspan='2' class="col-3">CLIENT GST</th>
+                            <th colspan='2' class="col-3">BILING ADDRESS</th>
+
+                        </tr>
+                        <tr style="font-size: 12px;">
+                            <td rowspan='1' colspan='2' class="col-3 align-top" style="text-align: left">
+                                {{ billed_to }}
+                                {% if client_gst %}
+                                    <span class="row">GST: {{ client_gst }}</span>
+                                {% endif %}
+                            </td>
+                            <td rowspan='1' colspan='2' class="col-3 align-top" style="text-align: left">
+                                {{ client_address }}
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr style="border: 1px solid #000; font-weight: bold; font-size: 12px;">
+                            <td class="col-1">UNIT PRICE</td>
+                            <td class="col-2">TAXES</td>
+                            <td class="col-2"> TOTAL</td>
+                        </tr>
+                   
+                        <tr style="border: 1px solid #000; font-weight: bold; font-size: 12px;">
+                            <td style="text-align: left">SUB TOTAL</td>
+                            <td rowspan='1' colspan='6' >&nbsp;</td>
+                            <td>₹{{ order_value }}</td>
+                        </tr>
+                        <tr style="border: 1px solid #000; font-weight: bold; font-size: 12px;">
+                            <td rowspan='1' colspan='2' style="text-align: left">DELIVERY CHARGE</td>
+                            <td rowspan='1' colspan='5' >&nbsp;</td>
+                            <td>₹{{ total_delivery_charge }}</td>
+                        </tr>
+                        <tr style="border: 1px solid #000; font-weight: bold; font-size: 12px;">
+                            <td style="text-align: left">TOTAL</td>
+                            <td rowspan='1' colspan='6' >&nbsp;</td>
+                            <td>₹{{ final_total }}</td>
+                        </tr>
+                    </table>
+                    {% comment %} <div class="row justify-content-between padH-20" style="padding-top: 22px; padding-bottom: 22px; background-color: #FFFFFF">
+                        <div class="col-4">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">TOTAL VALUE</span>
+                        </div>
+                        <div class="col-2">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">₹{{ order_value }}</span>
+                        </div>
+                        
+                    </div>
+                    <div class="row justify-content-between padH-20" style="padding-top: 22px; padding-bottom: 22px; background-color: #FFFFFF">
+                        <div class="col-4">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">DELIVERY CHARGES</span>
+                        </div>
+                        <div class="col-2">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">₹{{ delivery_charge }}</span>
+                        </div>
+                        
+                    </div>
+                    <div class="row justify-content-between padH-20" style="padding-top: 22px; padding-bottom: 22px; background-color: #FFFFFF">
+                        <div class="col-4">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">GST ON DELIVERY CHARGES</span>
+                        </div>
+                        <div class="col-2">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">₹{{ delivery_charge_tax }}</span>
+                        </div>
+                        
+                    </div>
+                    <div class="row justify-content-between padH-20" style="padding-top: 22px; padding-bottom: 22px; background-color: #FFFFFF">
+                        <div class="col-4">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">NET VALUE</span>
+                        </div>
+                        <div class="col-2">
+                            <span style="font-family: Roboto; font-weight: 500; font-size: 14px; line-height: 10px; color: #333333;">₹{{ final_total }}</span>
+                        </div>
+                        
+                    </div> {% endcomment %}
+                    <div class="row justify-content-between padH-20" style="margin-top: 18px;">
+                        <div class="col-6">
+                            <span class="row label" style="font-family: Roboto; font-weight: 500; font-size: 10px; line-height: 20px; color: #B9BDC1;">SOLD BY</span>
+                            <span class="row primary-color" style="font-family: Roboto; font-weight: 500; font-size: 10px; line-height: 20px; color: #FF5757;">{{ biller_name }}</span>
+                            <span class="row" style="font-family: Roboto; font-weight: normal; font-size: 10px; line-height: 14px; color: #333333;">{{ biller_gst }}</span>
+                            <span class="row" style="font-family: Roboto; font-weight: 500; font-size: 10px; line-height: 14px; color: #B9BDC1;">{{ biller_address }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </page>
+    </body>
+</html>
